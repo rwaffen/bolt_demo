@@ -3,6 +3,48 @@
 - https://puppet.com/docs/bolt/latest/running_bolt_commands.html
 - https://puppet.com/docs/bolt/latest/projects.html
 
+# Getting Started fast
+    mkdir my_project
+    cd my_project
+    bolt project init my_project
+    mkdir -p modules/apache/plans
+    mkdir -p modules/apache/files
+
+    touch Dockerfile
+    # add content from dockerfile
+
+    touch docker-compose.yaml
+    # add content from compose file
+
+    docker-compose up -d --build
+    docker-compose ps
+
+    bolt command run whoami -t 127.0.0.1:2000 -u root -p root --no-host-key-check
+
+    touch inventory.yaml
+    # add content from inventory
+
+    bolt command run whoami -t target1
+
+    touch modules/apache/plans/install.yaml
+    # add content from install.yaml
+
+    bolt plan run apache::install -t containers
+
+    curl 127.0.0.1:3000
+
+    touch modules/apache/files/start_apache.sh
+    # add content from apache.sh
+
+    bolt plan run apache::install -t containers
+
+    touch modules/apache/files/index.html
+    # add content from index.html
+
+    bolt plan run apache::install -t containers src=apache/index.html
+
+    curl 127.0.0.1:3000
+
 # additional bolt commands
     bolt command run 'pwd' --targets containers
     bolt command run @modules/apache/files/configure.sh --targets containers
