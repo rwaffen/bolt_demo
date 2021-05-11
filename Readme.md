@@ -1,8 +1,9 @@
-https://puppet.com/docs/bolt/latest/getting_started_with_bolt.html
-https://puppet.com/docs/bolt/latest/running_bolt_commands.html
-https://puppet.com/docs/bolt/latest/projects.html
+# Links
+- https://puppet.com/docs/bolt/latest/getting_started_with_bolt.html
+- https://puppet.com/docs/bolt/latest/running_bolt_commands.html
+- https://puppet.com/docs/bolt/latest/projects.html
 
-# additional commands
+# additional bolt commands
     bolt command run 'pwd' --targets containers
     bolt command run @modules/apache/files/configure.sh --targets containers
     cat modules/apache/files/configure.sh | bolt command run - --targets containers
