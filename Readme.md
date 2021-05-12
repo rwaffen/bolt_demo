@@ -73,3 +73,11 @@
     bolt task run package action=status name=puppet-agent --targets containers
 
     bolt apply --execute "file { '/etc/puppetlabs': ensure => present }" --targets containers
+
+    # targets over puppetdb
+
+    # repo meta update
+    bolt --query "inventory[certname] { facts.osfamily = 'RedHat' and facts.puppetversion ~ '^5.*' }" command run -c5 "sudo yum clean all"
+
+    # update puppet agent
+    bolt --query "inventory[certname] { facts.osfamily = 'Redhat' and facts.puppetversion ~ '^5.*' }" task run -c 5 --run-as root package name=puppet-agent action=upgrade
